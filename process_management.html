@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PROCESS MANAGEMENT</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>PROCESS MANAGEMENT</h1>
+    <p>A process contains its own independent virtual address space with both code and data, protected from other processes. Each process, in turn, contains one or more independently executing threads. A thread running within a process can execute application code, create new threads, create new independent processes, and manage communication and synchronization among the threads.</p>
+    <p>By creating and managing processes, applications can have multiple, concurrent tasks processing files, performing computations, or communicating with other networked systems. It is even possible to improve application performance by exploiting multiple CPU processors.</p>
+    <h2>Windows Processes and Threads</h2>
+    <p>Every process contains one or more threads, and the Windows thread is the basic executable unit; see the next chapter for a threads introduction. Threads are scheduled on the basis of the usual factors: availability of resources such as CPUs and physical memory, priority, fairness, and so on. Windows has long supported multiprocessor systems, so threads can be allocated to separate processors within a computer.</p>
+    <p>From the programmer’s perspective, each Windows process includes resources such as the following components:</p>
+    <ul><li>One or more threads.</li><li>A virtual address space that is distinct from other processes’ address spaces. Note that shared memory-mapped files share physical memory, but the sharing processes will probably use different -virtual addresses to access the mapped file.</li><li>One or more code segments, including code in DLLs.</li><li>One or more data segments containing global variables.</li><li>Environment strings with environment variable information, such as the -current search path.</li><li>The process heap.</li><li>Resources such as open handles and other heaps.</li></ul>
+    <p>Each thread in a process shares code, global variables, environment strings, and resources. Each thread is independently scheduled, and a thread has the following elements:</p>
+    <ul><li>A stack for procedure calls, interrupts, exception handlers, and automatic storage.</li><li>Thread Local Storage (TLS)-An arraylike collection of pointers giving each thread the ability to allocate storage to create its own unique data environment.</li><li>An argument on the stack, from the creating thread, which is usually unique for each thread.</li><li>A context structure, maintained by the kernel, with machine register values.</li></ul>
+    <p>Figure 6-1 shows a process with several threads. This figure is schematic and does not indicate actual memory addresses, nor is it drawn to scale.</p>
+    <figure><img class="fig6" src="https://www.codemag.com/Article/Image/100113/fig6_1.jpg"><figcaption class="captionn"><b>Figure 6</b>-1:  A Process and Its Threads</figcaption></figure>
+    <p><i>Note: </i>Figure 6-1 is a high-level overview from the programmer’s perspective. There are numerous technical and implementation details, and interested readers can find out more in Russinovich, Solomon, and Ionescu, <i>Windows Internals: Including Windows Server 2008 and Windows Vista</i>.</p>
+    <p>NOTE: A UNIX process is comparable to a Windows process.</p>
+    <p>Threads, in the form of POSIX Pthreads, are now nearly universally available and used in UNIX and Linux. Pthreads provides features similar to Windows threads, although Windows provides a broader collection of functions.</p>
+    <p>Vendors and others have provided various thread implementations for many years; they are not a new concept. Pthreads is, however, the most widely used standard, and proprietary implementations are long obsolete. There is an open source Pthreads library for Windows.</p>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

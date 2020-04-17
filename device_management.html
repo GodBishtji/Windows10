@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>DEVICE MANAGEMENT</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>DEVICE MANAGEMENT IN WINDOWS 10</h1>
+    <p>In windows 10, <b>Device Manager</b> is an application which helps to manage device.Device Manager is a Control Panel applet in Microsoft Windows operating systems. It allows users to view and control the hardware attached to the computer. When a piece of hardware is not working, the offending hardware is highlighted for the user to deal with. The list of hardware can be sorted by various criteria.</p>
+    <p>For each device, users can:</p>
+    <ul>
+      <li>Supply device drivers in accordance with the Windows Driver Model</li>
+      <li>Enable or disable devices</li>
+      <li>Tell Windows to ignore malfunctioning devices</li>
+      <li>View other technical properties</li>
+    </ul>
+    <p>Device Manager was introduced with Windows 95 and later added to Windows 2000. In NT-based versions, it is included as a Microsoft Management Console snap-in.</p>
+    <ul>
+<li class="toclevel-1 tocsection-1"><a href="#Types_of_icons"><span class="tocnumber">1</span> <span class="toctext">Types of icons</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Disabled_device"><span class="tocnumber">1.1</span> <span class="toctext">Disabled device</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Hardware_not_working_properly"><span class="tocnumber">1.2</span> <span class="toctext">Hardware not working properly</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Hardware_not_recognized"><span class="tocnumber">1.3</span> <span class="toctext">Hardware not recognized</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Device_manually_selected"><span class="tocnumber">1.4</span> <span class="toctext">Device manually selected</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-6"><a href="#Error_codes"><span class="tocnumber">2</span> <span class="toctext">Error codes</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Driverquery_command"><span class="tocnumber">3</span> <span class="toctext">Driverquery command</span></a></li>
+</ul>
+<h2><span class="mw-headline" id="Types_of_icons">Types of icons</span></h2>
+<h3><span class="mw-headline" id="Disabled_device">Disabled device</span></h3>
+<p>A disabled device has either been manually disabled by a user or by some way of error. In Windows 95 through XP, this is denoted by a red X. In Windows Vista and Windows 7, this was replaced by a grey downward pointing arrow in the lower right-hand corner of the device's icon.
+</p>
+<h3><span class="mw-headline" id="Hardware_not_working_properly">Hardware not working properly</span></h3>
+<p>There are many reasons why hardware may not work properly. If Windows recognizes a problem with a device, it is denoted by a black exclamation point (!) on a yellow triangle in the lower right-hand corner of the device's icon.
+</p>
+<h3><span class="mw-headline" id="Hardware_not_recognized">Hardware not recognized</span></h3>
+<p>Hardware may not be recognized if it is not installed properly or not compatible with the system. This is denoted by a yellow question mark in place of the device's icon.
+</p>
+<h3><span class="mw-headline" id="Device_manually_selected">Device manually selected</span></h3>
+<p>A blue "i" on a white field in the lower right-hand corner of a Device's icon indicates that the <b>Use automatic settings</b> feature is not selected for the device and that the resource was manually selected. Note that this does not indicate a problem or disabled state.
+</p>
+<h2><span class="mw-headline" id="Error_codes">Error codes</span></h2>
+<p>Device Manager error codes are numerical codes, each accompanied by an error message, which help users determine what kind of issue Windows is having with a piece of hardware.
+</p>
+<table class="wikitable" border="1">
+<tbody><tr>
+<th>Code</th>
+<th>Meaning
+</th></tr>
+<tr>
+<td>1</td>
+<td><i>This device has not been configured correctly.</i>
+</td></tr>
+<tr>
+<td>3</td>
+<td><i>The driver for this device may be corrupted, or the system may be running low on memory.</i>
+</td></tr>
+<tr>
+<td>10</td>
+<td><i>This device cannot start.</i>
+</td></tr>
+
+<tr>
+<td>12</td>
+<td><i>Not enough resources for the device.</i>
+</td></tr>
+
+<tr>
+<td>14</td>
+<td><i> The computer must be restarted for the device to work properly.</i>
+</td></tr>
+
+<tr>
+<td>16</td>
+<td><i>Windows can't identify all the resources this device requires.</i>
+</td></tr>
+
+<tr>
+<td>18</td>
+<td><i>Drivers for this device must be reinstalled.</i>
+</td></tr>
+
+<tr>
+<td>19</td>
+<td><i>Configuration information in Windows registry is damaged or corrupted for this device.</i>
+</td></tr>
+
+<tr>
+<td>21</td>
+<td><i>Windows is removing this device.</i>
+</td></tr>
+
+<tr>
+<td>22</td>
+<td><i>This device is disabled.</i>
+</td></tr>
+
+<tr>
+<td>24</td>
+<td><i>This device is not present, does not have all its drivers installed, or is not working properly.</i>
+</td></tr>
+
+<tr>
+<td>28</td>
+<td><i>The drivers for this device are not installed.</i>
+</td></tr>
+
+<tr>
+<td>29</td>
+<td><i>The firmware of the device did not give it the required resources.</i>
+</td></tr>
+
+<tr>
+<td>31</td>
+<td><i>Windows cannot load the drivers required for this device.</i>
+</td></tr>
+
+<tr>
+<td>32</td>
+<td><i>A driver for this device has been disabled.</i>
+</td></tr>
+
+<tr>
+<td>33</td>
+<td><i>Windows cannot determine which resources are required for this device.</i>
+</td></tr>
+
+<tr>
+<td>34</td>
+<td><i> Windows cannot determine the settings for this device.</i>
+</td></tr>
+
+<tr>
+<td>35</td>
+<td><i>The computer's firmware does not include enough information to properly configure and use this device.</i>
+</td></tr>
+
+<tr>
+<td>36</td>
+<td><i>This device is requesting a PCI interrupt but is configured for an ISA interrupt (or vice versa).</i>
+</td></tr>
+
+<tr>
+<td>37</td>
+<td><i>Windows failed to initialize the device driver for this hardware.</i>
+</td></tr>
+
+<tr>
+<td>38</td>
+<td><i>Windows cannot run the driver for this device because a previous instance of the driver exists.</i>
+</td></tr>
+
+<tr>
+<td>39</td>
+<td><i>Windows cannot load the driver for this device. The driver may be corrupted or missing.</i>
+</td></tr>
+
+<tr>
+<td>40</td>
+<td><i>Windows cannot access this hardware because its service key information in the registry is missing or corrupted.</i>
+</td></tr>
+
+<tr>
+<td>41</td>
+<td><i>Windows successfully loaded the device driver for this hardware but cannot find the hardware device.</i>
+</td></tr>
+
+<tr>
+<td>42</td>
+<td><i>Windows cannot run the driver for this device because there is a duplicate device already running in the system.</i>
+</td></tr>
+
+<tr>
+<td>43</td>
+<td><i>Windows has stopped this device because it has reported problems.</i>
+</td></tr>
+
+<tr>
+<td>44</td>
+<td><i>An application or service has shut down this hardware device.</i>
+</td></tr>
+
+<tr>
+<td>45</td>
+<td><i>This hardware device is not connected to the computer.</i>
+</td></tr>
+
+<tr>
+<td>46</td>
+<td><i>Windows cannot gain access to this hardware device because the operating system is in the process of shutting down.</i>
+</td></tr>
+
+<tr>
+<td>47</td>
+<td><i>Windows cannot use this device because it has been prepared for safe removal, but it has not been removed from the computer.</i>
+</td></tr>
+
+<tr>
+<td>48</td>
+<td><i>The driver for this device has been blocked from starting because it is known to have problems with Windows.</i>
+</td></tr>
+
+<tr>
+<td>49</td>
+<td><i>Windows cannot start new hardware devices because the system hive is too large and exceeds the Registry Size Limit.</i>
+</td></tr>
+
+<tr>
+<td>52</td>
+<td><i> Windows cannot verify the digital signature for the drivers required for this device. A recent hardware or software change might have installed a file that is signed incorrectly or damaged.</i>
+</td></tr>
+
+</tbody></table>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

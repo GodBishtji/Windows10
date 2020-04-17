@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>FILE SHARING</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>FILE SHARING</h1>
+    <p>File access services enable applications to discover,
+access, and share files that are hosted on or made available by a file server,
+using a network between them, in a secure and managed environment. File access
+services also enable file servers to manage and replicate files in a
+distributed environment </p>
+<p>Most businesses and many personal computing environments
+have a requirement for file hierarchies stored in a file system (object store)
+on one computer to be accessed and manipulated by applications on other
+computers. This scenario is typically referred to as file sharing or remote
+file access. A key goal is to ensure application compatibility by providing
+broadly the same semantics to clients as if the shared object store were local
+to them. This compatibility would not be provided by sharing the files through
+a protocol with more limited semantics, such as FTP or <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_d72f1494-4917-4e9e-a9fd-b8f1b2758dcd" data-linktype="relative-path">HTTP</a></span>.
+The file access protocols address the need for ensured compatibility.</p>
+<p>The File Access Services Protocols Overview <span><a href="../ms-fasod/a8df7cf6-4f73-4441-8319-653618a50da0" data-linktype="relative-path">[MS-FASOD]</a></span>
+fully describes these protocols. The File Access Services protocols are listed
+in [MS-FASOD] section <span><a href="../ms-fasod/0e86203b-5427-4889-8f7f-d047a7392c73" data-linktype="relative-path">2.2</a></span>.</p>
+<p>Remote file systems enable an application that runs on a
+local computer to access files stored on a remote computer. See [Rifkin1986]
+for a discussion on providing transparent access to remote files. </p>
+<p>Support for remote file systems in Windows is based on installable
+drivers and therefore can be extended. The support of remote file systems
+requires three components:</p>
+<ul><li><p><span><span>
+</span></span>Software installed on the client to use a transport protocol.</p>
+</li><li><p><span><span>
+</span></span>A transport protocol used for communication and a network
+connection.</p>
+</li><li><p><span><span>
+</span></span>Software installed on the server to use a transport protocol.</p>
+</li></ul>
+<p>The software component of a remote file system on a client
+computer is referred to in Windows as a network redirector because it is
+responsible for redirecting requests for file operations from local client
+applications to a remote server where the requests are processed. The network
+redirector receives responses from the remote server that are then returned to
+the local application. The local application might be unaware that remote file
+I/O rather than local file I/O has occurred. Hence the network redirector
+software creates the appearance on the client system that remote files and
+resources are the same as local files and resources and allows them to be used
+and manipulated in the same way. In Windows, it is possible to have multiple
+redirectors installed at any given time. The Windows Driver Kit (WDK) <span><a href="https://go.microsoft.com/fwlink/?LinkId=151330" data-linktype="external">[MSDN-WinDriverKit]</a></span>
+gives details for developing providers, which are essentially device drivers.</p>
+<p><img class="file-pic" src="https://docs.microsoft.com/en-us/openspecs/windows_protocols/ms-wpo/ms-wpo_files/image001.png" alt="The Windows file provider architecture" title="The Windows file provider architecture" data-linktype="relative-path"></p>
+<p class="img-desc"><b>Figure 1: The Windows file provider architecture</b></p>
+<p><b>Note</b>  Information about the local object
+store in Windows can be found in <span><a href="https://go.microsoft.com/fwlink/?LinkId=140636" data-linktype="external">[FSBO]</a></span>. </p>
+<p>The Multiple UNC Provider component of Windows is a <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_c9507dca-291d-4fd6-9cba-a9ee7da8c908" data-linktype="relative-path">Universal
+Naming Convention (UNC)</a></span> resource locator responsible for determining
+the correct provider for UNC connections. By using the Multiple UNC Provider to
+find the provider for a UNC connection, Windows can simultaneously have
+multiple network redirectors installed that support various formats of UNC
+names.</p>
+<p>With multiple redirectors that support UNC names, there is
+the potential that more than one provider could service a UNC name. Therefore,
+an arbitrator is needed. Windows inspects an application's UNC requests,
+determines which of the currently installed providers, if any, can service the
+UNC name, and routes the application request to that provider.</p>
+<p>Provider selection is invoked as part of all UNC name-based
+I/O requests. When Windows receives a UNC request, it accesses all of the
+installed providers in order to determine which provider, or providers, can
+accept the request. Further details on the process are available in
+[WININTERNALS] section 13.</p>
+<p>After the initial routing is determined, no further
+interaction from provider selection is required and the application accesses
+the file via the provider as it would any file-based service, whether local or
+remote.</p>
+<p>CIFS is a dialect of the <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_09dbec39-5e75-4d9a-babf-1c9f1d499625" data-linktype="relative-path">SMB</a></span> network file
+sharing protocol, designed to provide concurrent access to directories and
+files hosted on servers. CIFS is applicable for all scenarios that involve transferring
+files between client and server. It is also applicable for accessing
+centralized print queues, and for interprocess communications using named
+pipes.</p>
+<p>The Server Message Block (SMB) Protocol specified in <span><a href="../ms-smb/f210069c-7086-4dc2-885e-861d837df688" data-linktype="relative-path">[MS-SMB]</a></span>
+lists extensions, enhancements, and clarifications to the CIFS protocol. In
+contrast, the Server Message Block (SMB) Protocol Versions 2 and 3 specified in
+<span><a href="../ms-smb2/5606ad47-5ee0-437a-817e-70c366052962" data-linktype="relative-path">[MS-SMB2]</a></span>
+is an entirely new file sharing protocol based on SMB concepts. Server Message
+Block Protocol Versions 2 and 3 are referred to as the <i>SMB 2 Protocol</i>.</p>
+<p>SMB and SMB 2 serve a special role in Windows protocols
+because they offer a construct known as the <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_34f1dfa8-b1df-4d77-aa6e-d777422f9dca" data-linktype="relative-path">named pipe</a></span>. The name
+of the pipe serves as the <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_b91c1e27-e8e0-499b-8c65-738006af72ee" data-linktype="relative-path">endpoint</a></span> for the
+communication in the same manner as a port number serves as the endpoint for <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_b08d36f6-b5c6-4ce4-8d2d-6f2ab75ea4cb" data-linktype="relative-path">TCP</a></span>
+sessions.</p>
+<p>Network captures of SMB 2 protocol traffic can include <span><a href="49801c02-2e60-4133-8c6a-d9e1b6d9c02a#gt_2a8ccfe4-0241-44a0-8a97-bcdf91f5f7d8" data-linktype="relative-path">input/output
+control (IOCTL)</a></span> codes relating to device-specific behavior, such as
+failover clustering, that are not part of the SMB 2 Protocol. For more
+information on these IOCTLs, which are defined in the Windows SDK header file,
+winioctl.h, see <span><a href="https://go.microsoft.com/fwlink/?LinkId=403982" data-linktype="external">[MSDN-DevInOutCtrl]</a></span>.</p>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

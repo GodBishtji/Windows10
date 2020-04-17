@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>INTERRUPT VECTOR</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>INTERRUPT VECTOR</h1>
+    <p>The <b>!ivt</b> extension displays the Itanium interrupt vector table.</p>
+    <pre tabindex="0" class="table2"><code class="lang-dbgcmd" data-author-content="!ivt [-v] [-a] [Vector]
+    !ivt -?
+    ">!ivt [-v] [-a] [Vector]
+    !ivt -?
+    </code></pre>
+    <p><strong>Important</strong>&nbsp;&nbsp;This command has been deprecated in the Windows Debugger Version 10.0.14257 and later, and is no longer available.</p>
+    <h2 id="parameters"><span id="Parameters"></span><span id="parameters"></span><span id="PARAMETERS"></span>Parameters<a class="docon docon-link heading-anchor" href="#parameters" aria-labelledby="parameters"></a></h2>
+    <p><span id="_______Vector______"></span><span id="_______vector______"></span><span id="_______VECTOR______"></span> <em>Vector</em><br>
+Specifies an interrupt vector table entry for the current processor. If <em>Vector</em> is omitted, the entire interrupt vector table for the current processor on the target computer is displayed. Interrupt vectors that have not been assigned are not displayed unless the <strong>-a</strong> option is specified.</p>
+<p><span id="_______-a______"></span><span id="_______-A______"></span> <strong>-a</strong><br>
+Displays all interrupt vectors, including those that are unassigned.</p>
+<p><span id="_______-v______"></span><span id="_______-V______"></span> <strong>-v</strong><br>
+Displays detailed output.</p>
+<p><span id="_______-_______"></span> <strong>-?</strong><br>
+Displays help for this extension in the Debugger Command window.</p>
+<h3 id="dll"><span id="DLL"></span><span id="dll"></span>DLL<a class="docon docon-link heading-anchor" href="#dll" aria-labelledby="dll"></a></h3>
+<div class="table-scroll-wrapper"><table class="table2"><caption class="visually-hidden">Table 1</caption>
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td align="left"><p><strong>Windows 2000</strong></p></td>
+<td align="left"><p>Unavailable</p></td>
+</tr>
+<tr class="even">
+<td align="left"><p><strong>Windows XP and later</strong></p></td>
+<td align="left"><p>Kdexts.dll</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>This extension command can only be used with an Itanium target computer.</p>
+<h3 id="additional-information"><span id="Additional_Information"></span><span id="additional_information"></span><span id="ADDITIONAL_INFORMATION"></span>Additional Information<a class="docon docon-link heading-anchor" href="#additional-information" aria-labelledby="additional-information"></a></h3>
+<p>For more information about how to display the interrupt dispatch tables on an x64 or x86 target computer, see <a href="-idt" data-linktype="relative-path"><strong>!idt</strong></a>.</p>
+<h2 id="remarks">Remarks<a class="docon docon-link heading-anchor" href="#remarks" aria-labelledby="remarks"></a></h2>
+<p>Here is an example of the output from this extension:</p>
+<pre tabindex="0" class="table2"><code class="lang-dbgcmd" data-author-content="kd> !ivt
+
+Dumping IA64 IVT:
+
+00:e000000083005f60 nt!KiPassiveRelease
+0f:e000000083576830 hal!HalpPCIISALine2Pin
+10:e0000000830067f0 nt!KiApcInterrupt
+20:e000000083006790 nt!KiDispatchInterrupt
+30:e000000083576b30 hal!HalpCMCIHandler
+31:e000000083576b20 hal!HalpCPEIHandler
+41:e000000085039680 i8042prt!I8042KeyboardInterruptService (KINTERRUPT e000000085039620)
+51:e000000085039910 i8042prt!I8042MouseInterruptService (KINTERRUPT e0000000850398b0)
+61:e0000000854484f0 VIDEOPRT!pVideoPortInterrupt (KINTERRUPT e000000085448490)
+71:e0000000856c9450 NDIS!ndisMIsr (KINTERRUPT e0000000856c93f0)
+81:e0000000857fd000 SCSIPORT!ScsiPortInterrupt (KINTERRUPT e0000000857fcfa0)
+91:e0000000857ff510 atapi!IdePortInterrupt (KINTERRUPT e0000000857ff4b0)
+a1:e0000000857d84b0 atapi!IdePortInterrupt (KINTERRUPT e0000000857d8450)
+a2:e0000165fff2cab0 portcls!CInterruptSyncServiceRoutine (KINTERRUPT e0000165fff2ca50)
+b1:e0000000858c7460 ACPI!ACPIInterruptServiceRoutine (KINTERRUPT e0000000858c7400)
+b2:e0000000850382e0 USBPORT!USBPORT_InterruptService (KINTERRUPT e000000085038280)
+d0:e0000000835768d0 hal!HalpClockInterrupt
+e0:e000000083576850 hal!HalpIpiInterruptHandler
+f0:e0000000835769c0 hal!HalpProfileInterrupt
+f1:e000000083576830 hal!HalpPCIISALine2Pin
+fd:e000000083576b10 hal!HalpMcRzHandler
+fe:e000000083576830 hal!HalpPCIISALine2Pin
+">kd&gt; !ivt
+
+Dumping IA64 IVT:
+
+00:e000000083005f60 nt!KiPassiveRelease
+0f:e000000083576830 hal!HalpPCIISALine2Pin
+10:e0000000830067f0 nt!KiApcInterrupt
+20:e000000083006790 nt!KiDispatchInterrupt
+30:e000000083576b30 hal!HalpCMCIHandler
+31:e000000083576b20 hal!HalpCPEIHandler
+41:e000000085039680 i8042prt!I8042KeyboardInterruptService (KINTERRUPT e000000085039620)
+51:e000000085039910 i8042prt!I8042MouseInterruptService (KINTERRUPT e0000000850398b0)
+61:e0000000854484f0 VIDEOPRT!pVideoPortInterrupt (KINTERRUPT e000000085448490)
+71:e0000000856c9450 NDIS!ndisMIsr (KINTERRUPT e0000000856c93f0)
+81:e0000000857fd000 SCSIPORT!ScsiPortInterrupt (KINTERRUPT e0000000857fcfa0)
+91:e0000000857ff510 atapi!IdePortInterrupt (KINTERRUPT e0000000857ff4b0)
+a1:e0000000857d84b0 atapi!IdePortInterrupt (KINTERRUPT e0000000857d8450)
+a2:e0000165fff2cab0 portcls!CInterruptSyncServiceRoutine (KINTERRUPT e0000165fff2ca50)
+b1:e0000000858c7460 ACPI!ACPIInterruptServiceRoutine (KINTERRUPT e0000000858c7400)
+b2:e0000000850382e0 USBPORT!USBPORT_InterruptService (KINTERRUPT e000000085038280)
+d0:e0000000835768d0 hal!HalpClockInterrupt
+e0:e000000083576850 hal!HalpIpiInterruptHandler
+f0:e0000000835769c0 hal!HalpProfileInterrupt
+f1:e000000083576830 hal!HalpPCIISALine2Pin
+fd:e000000083576b10 hal!HalpMcRzHandler
+fe:e000000083576830 hal!HalpPCIISALine2Pin
+</code></pre>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

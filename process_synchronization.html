@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>PROCESS SYNCHRONIZATION</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>PROCESS SYNCHRONIZATION</h1>
+    <p>Windows operating system is a multithreaded kernel that provide support for real time application and multiprocessors. On uniprocessor system, Windows provides interrupt masks to protect access to global resources. It protects access to global resource using spinlock. The kernel uses spinlocks only to protect short code segment like Solaris. The kernel ensures that while holding a spinlock, a thread will never be preempted.</p>
+    <p>Windows provide dispatcher object for thread synchronization according to several different mechanisms including mutexes, semaphores, events and timers. The system protects shared data by requiring a thread to gain ownership of a <strong>mutex</strong> for accessing the data and when it is finished, releases the ownership.</p>
+    <p><strong>Events</strong> acts as a conditional variable to notify a waiting thread when desired condition occurs.</p>
+    <p><strong>Timers are</strong> used to notify one or more thread when time expired.</p>
+    <p><strong>Dispatcher objects</strong> may be either signaled state or a non-signaled state.</p>
+    <p>Signaled state indicates that an object is available and a thread will not block when acquiring the object.</p>
+    <p>Non-signaled state indicates that an object is not available and a thread will block when trying to acquire the object.</p>
+    <p>The below figure shows the state transitions of a mutex lock dispatcher object −</p>
+    <p><img src="https://www.tutorialspoint.com/assets/questions/media/29463/50.jpg" class="fr-fic" width="600" height="216"></p>
+    <hr>
+    <div class="bottom-container">
+      <div class="footer">
+        <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+        <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+        <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+        <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+      </div>
+    </div>
+  </body>
+</html>

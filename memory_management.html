@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>MEMORY MANAGEMENT</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>MEMORY MANAGEMENT</h1>
+    <p>The memory manager implements virtual memory, provides a core set of services such as memory mapped files, copy-on-write memory, large memory support, and underlying support for the cache manager.</p>
+    <h2>About Memory Management</h2>
+    <p>Each process on 32-bit Microsoft Windows has its own virtual address space that enables addressing up to 4 gigabytes of memory. Each process on 64-bit Windows has a virtual address space of 8 terabytes. All threads of a process can access its virtual address space. However, threads cannot access memory that belongs to another process, which protects a process from being corrupted by another process.</p>
+    <p>For information on the virtual address space and the memory management functions, these links are provided that will link you to OFFICIAL MICROSOFT website.</p>
+    <ul>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/virtual-address-space" data-linktype="relative-path">Virtual Address Space</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/memory-pools" data-linktype="relative-path">Memory Pools</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/memory-performance-information" data-linktype="relative-path">Memory Performance Information</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/virtual-memory-functions" data-linktype="relative-path">Virtual Memory Functions</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/heap-functions" data-linktype="relative-path">Heap Functions</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/file-mapping" data-linktype="relative-path">File Mapping</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/large-memory-support" data-linktype="relative-path">Large Memory Support</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/global-and-local-functions" data-linktype="relative-path">Global and Local Functions</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/standard-c-library-functions" data-linktype="relative-path">Standard C Library Functions</a></li>
+    <li><a href="https://docs.microsoft.com/en-us/windows/win32/memory/comparing-memory-allocation-methods" data-linktype="relative-path">Comparing Memory Allocation Methods</a></li>
+    </ul>
+    <hr>
+    <div class="bottom-container">
+      <div class="footer">
+        <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+        <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+        <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+        <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+      </div>
+    </div>
+  </body>
+</html>

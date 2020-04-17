@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>CPU SCHEDULING</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>CPU SCHEDULING</h1>
+    <p>Multilevel feedback queue algorithm is used on windows 10….In multilevel queue scheduling we assign a process to a queue and it remains in that queue until the process is allowed access to the CPU. That is, processes do not move between queues.
+the ready queue is partitioned into multiple queues of different priorities. The system use to assign processes to queue based on their CPU burst characteristic. If a process consumes too much CPU time, it is placed into a lower priority queue.
+Process that waits too long in a lower priority queue may be moved to a higher priority queue.</p>
+<h3>Multilevel Feedback Queue Scheduling</h3>
+<p>In a multilevel queue-scheduling algorithm, processes are permanently assigned to a queue on entry to the system. Processes do not move between queues. This setup has the advantage of low scheduling overhead, but the disadvantage of being inflexible.
+<br>
+Multilevel feedback queue scheduling, however, allows a process to move between queues. The idea is to separate processes with different CPU-burst characteristics. If a process uses too much CPU time, it will be moved to a lower-priority queue. Similarly, a process that waits too long in a lower-priority queue may be moved to a higher-priority queue. This form of aging prevents starvation.</p>
+<img class="mfqs-img" src="https://www.studytonight.com/operating-system/images/multi-level-feedback-scheduling-1.png" alt="MFQS-img">
+<p class="img-desc"><b>An example of a multilevel feedback queue can be seen in the below figure.</b></p>
+<p>In general, a multilevel feedback queue scheduler is defined by the following parameters:</p>
+<ul class="content">
+<li>The number of queues.</li>
+<li>The scheduling algorithm for each queue.</li>
+<li>The method used to determine when to upgrade a process to a higher-priority queue.</li>
+<li>The method used to determine when to demote a process to a lower-priority queue.</li>
+<li>The method used to determine which queue a process will enter when that process needs service.</li>
+</ul>
+<p>The definition of a multilevel feedback queue scheduler makes it the most general CPU-scheduling algorithm. It can be configured to match a specific system under design. Unfortunately, it also requires some means of selecting values for all the parameters to define the best scheduler. Although a multilevel feedback queue is the <b>most general scheme</b>, it is also the <b>most complex</b>.</p>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

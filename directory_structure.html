@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+  <title>DIRECTORY STRUCTURE</title>
+</head>
+<link rel="stylesheet" href="css/style.css">
+
+<body>
+  <header>
+            <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+            <nav>
+                <ul class="nav__links">
+                    <li><a href="introduction.html">Introduction</a></li>
+                    <li><a href="deadlocks.html">Deadlocks</a></li>
+                    <li><a href="file_management.html">File Management</a></li>
+                </ul>
+            </nav>
+            <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+            <p onclick="openNav()" class="menu cta">Menu</p>
+        </header>
+        <div id="mobile__menu" class="overlay">
+            <a class="close" onclick="closeNav()">&times;</a>
+            <div class="overlay__content">
+                <a href="#">Introduction</a>
+                <a href="#">Deadlocks</a>
+                <a href="#">File Management</a>
+            </div>
+        </div>
+        <script type="text/javascript" src="mobile.js"></script>
+  <h1>DIRECTORY STRUCTURE</h1>
+  <p>The following folders may appear in the root of a <a href="https://en.wikipedia.org/wiki/System_partition_and_boot_partition#Microsoft_definition" title="System partition and boot partition">boot partition</a>.</p>
+<table class="wikitable">
+    <tbody>
+      <tr>
+        <th style="width:13em">Folder
+        </th>
+        <th>Description
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\PerfLogs</code>
+          </p>
+        </td>
+        <td>May hold Windows performance logs, but on a default configuration, it is empty.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\Program Files</code>
+          </p>
+        </td>
+        <td><b>32-bit architecture:</b> All programs (both 16-bit and 32-bit) are installed in this folder.
+          <p><b>64-bit architecture:</b> 64-bit programs are installed in this folder.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\Program Files (x86)</code>
+          </p>
+        </td>
+        <td>Appears on 64-bit editions of Windows. 32-bit and 16-bit programs are by default installed in this folder, even though 16-bit programs do not run on 64-bit Windows.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\ProgramData</code> (hidden)
+          </p>
+        </td>
+        <td>Contains program data that is expected to be accessed by computer programs regardless of the user account in the context of which they run. For example, a program may store specific information needed to operate DVD recorders or image scanners connected to a computer, because all users use them. Windows itself uses this folder. For example,
+          Windows Defender stores its virus definitions in <code>\ProgramData\Microsoft\Windows
+            Defender</code>. Programs do not have permission to store files in this folder, but have permission to create subfolders and store files in them. The organization of the files is at the discretion of the developer.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\Users</code>
+          </p>
+        </td>
+        <td>User profile folders. This folder contains one subfolder for each user that has logged onto the system at least once. In addition, it has two other folders: "<code>Public</code>" and "<code>Default</code>" (hidden). It also has two folder
+          like-items called "Default User" (an NTFS junction point to "Default" folder) and "All Users" (a NTFS symbolic link to "<code>C:\ProgramData</code>").
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <dl>
+            <dd><code>\Public</code></dd>
+          </dl>
+        </td>
+        <td>This folder serves as a buffer for users of a computer to share files. By default this folder is accessible to all users that can log on to the computer. Also, by default, this folder is shared over the network, although anonymous access
+          (i.e. without a valid password-protected user account) to it is denied. This folder contains user data, not program data, meaning that users are expected to be sole decider of what is in this folder and how it is organized. It is unethical
+          for a program to store its proprietary data here. (There are other folders dedicated to program data.)
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <dl>
+            <dd><code>[username]\AppData</code> (hidden)</dd>
+          </dl>
+        </td>
+        <td>This folder stores per-user application data and settings. The folder contains three subfolders: <code>Roaming</code>, <code>Local</code>, and <code>LocalLow</code>. <code>Roaming</code> is for networked based logins for roaming profiles.
+          Data saved in <code>Roaming</code> will synchronize to the computer when the user logs into that. <code>Local</code> and <code>LocalLow</code> does not sync up with networked computers.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><code>\Windows</code>
+          </p>
+        </td>
+        <td>Windows itself is installed into this folder.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <dl>
+            <dd><code>\System</code></dd>
+            <dd><code>\System32</code></dd>
+            <dd><code>\SysWOW64</code></dd>
+          </dl>
+        </td>
+        <td>These folders store dynamic-link library (DLL) files that implement the core features of Windows and Windows API.
+          Any time a program asks Windows to load a DLL file and do not specify a path, these folders are searched after program's own folder is searched.<sup id="cite_ref-dllsearch_5-0" class="reference"></sup> "<style data-mw-deduplicate="TemplateStyles:r886049734">
+            .mw-parser-output .monospaced {
+              font-family: monospace, monospace
+            }
+          </style><span class="monospaced">System</span>" stores 16-bit DLLs and is normally empty on 64-bit editions of Windows. "
+          System32" stores either 32-bit or 64-bit DLL files, depending on whether the Windows edition is 32-bit or 64-bit. "
+          SysWOW64" only appears on 64-bit editions of Windows and stores 32-bit DLLs.
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <dl>
+            <dd><code>\WinSxS</code></dd>
+          </dl>
+        </td>
+        <td>This folder is officially called "Windows component store" and constitutes the majority of Windows. A copy of all Windows components, as well as all Windows updates and service packs
+          is stored in this folder. Starting with Windows 7 and Windows Server 2008 R2, Windows automatically scavenges this
+          folder to keep its size in check. For security reasons and to avoid the DLL Hell issue, Windows enforces very stringent requirements on how the files in this folder are organized.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div class="bottom-container">
+    <div class="footer">
+      <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+      <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+      <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+      <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>DISC SCHEDULING</title>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <h1>DISK SCHEDULING</h1>
+    <p>Multilevel feedback queue algorithm is used on windows 10.In multilevel queue scheduling we assign a process to a queue and it remains in that queue until the process is allowed access to the CPU. That is, processes do not move between queues.The ready queue is partitioned into multiple queues of different priorities. The system use to assign processes to queue based on their CPU burst characteristic. If a process consumes too much CPU time, it is placed into a lower priority queue.Process that waits too long in a lower priority queue may be moved to a higher priority queue.</p>
+    <h2>Multilevel Feedback Queue Scheduling (MLFQ) CPU Scheduling</h2>
+    <p>This Scheduling is like Multilevel Queue(MLQ) Scheduling but in this process can move between the queues. Multilevel Feedback Queue Scheduling (MLFQ) keep analyzing the behavior (time of execution) of processes and according to which it changes its priority.Now, look at the diagram and explanation below to understand it properly.</p><br>
+    <img class="file-pic" src="https://media.geeksforgeeks.org/wp-content/uploads/Multilevel-Feedback-Queue-Scheduling-300x269.png" alt="" width="300" height="269" class="aligncenter size-medium wp-image-234378">
+    <p>Now let us suppose that queue 1 and 2 follow round robin with time quantum 4 and 8 respectively and queue 3 follow FCFS.One implementation of MFQS is given below –</p>
+    <ol>
+<li>When a process starts executing then it first enters queue 1.</li>
+<li>In queue 1 process executes for 4 unit and if it completes in this 4 unit or it gives CPU for I/O operation in this 4 unit than the priority of this process does not change and if it again comes in the ready queue than it again starts its execution in Queue 1.</li>
+<li>If a process in queue 1 does not complete in 4 unit then its priority gets reduced and it shifted to queue 2.</li>
+<li>Above points 2 and 3 are also true for queue 2 processes but the time quantum is 8 unit.In a general case if a process does not complete in a time quantum than it is shifted to the lower priority queue.</li>
+<li>In the last queue, processes are scheduled in FCFS manner.</li>
+<li>A process in lower priority queue can only execute only when higher priority queues are empty.</li>
+<li>A process running in the lower priority queue is interrupted by a process arriving in the higher priority queue.</li>
+</ol>
+<p>Well, above implementation may differ for example the last queue can also follow Round-robin Scheduling.</p>
+<p><strong>Problems in the above implementation –</strong> A process in the lower priority queue can suffer from starvation due to some short processes taking all the CPU time.<br>
+<strong>Solution –</strong> A simple solution can be to boost the priority of all the process after regular intervals and place them all in the highest priority queue.</p>
+<p><strong>What is the need of such complex Scheduling?</strong></p>
+<ul>
+<li>Firstly, it is more flexible than the multilevel queue scheduling.</li>
+<li>To optimize turnaround time algorithms like SJF is needed which require the running time of processes to schedule them. But the running time of the process is not known in advance. MFQS runs a process for a time quantum and then it can change its priority(if it is a long process). Thus it learns from past behavior of the process and then predicts its future behavior.This way it tries to run shorter process first thus optimizing turnaround time.</li>
+<li>MFQS also reduces the response time.</li>
+</ul>
+<p><strong>Example –</strong><br>
+Consider a system which has a CPU bound process, which requires the burst time of 40 seconds.The multilevel Feed Back Queue scheduling algorithm is used and the queue time quantum ‘2’ seconds and in each level it is incremented by ‘5’ seconds.Then how many times the process will be interrupted and on which queue the process will terminate the execution?</p>
+<p><strong>Solution –</strong><br>
+Process P needs 40 Seconds for total execution.<br>
+At Queue 1 it is executed for 2 seconds and then interrupted and shifted to queue 2.<br>
+At Queue 2 it is executed for 7 seconds and then interrupted and shifted to queue 3.<br>
+At Queue 3 it is executed for 12 seconds and then interrupted and shifted to queue 4.<br>
+At Queue 4 it is executed for 17 seconds and then interrupted and shifted to queue 5.<br>
+At Queue 5 it executes for 2 seconds and then it completes.<br>
+Hence the process is interrupted 4 times and completes on queue 5.</p>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>

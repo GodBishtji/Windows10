@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css?family=Montserrat:500&display=swap" rel="stylesheet">
+    <title>IPC</title>
+  </head>
+  <link rel="stylesheet" href="css/style.css">
+  <body>
+    <header>
+              <a class="logo" href="index.html"><img href="index.html "src="images/logo.png" alt="home-imgg"></a>
+              <nav>
+                  <ul class="nav__links">
+                      <li><a href="introduction.html">Introduction</a></li>
+                      <li><a href="deadlocks.html">Deadlocks</a></li>
+                      <li><a href="file_management.html">File Management</a></li>
+                  </ul>
+              </nav>
+              <a class="cta" href="mailto:shubh.manu44@gmail.com">Contact</a>
+              <p onclick="openNav()" class="menu cta">Menu</p>
+          </header>
+          <div id="mobile__menu" class="overlay">
+              <a class="close" onclick="closeNav()">&times;</a>
+              <div class="overlay__content">
+                  <a href="#">Introduction</a>
+                  <a href="#">Deadlocks</a>
+                  <a href="#">File Management</a>
+              </div>
+          </div>
+        <script type="text/javascript" src="mobile.js"></script>
+    <div class="nav_bar" data-bi-name="pageactions" role="complementary" aria-label="Page Actions">
+						<div id="affixed-right-container" class="doc-outline is-fixed is-vertically-scrollable" style="top: 24px; bottom: 24px; width: 250px;">
+							<nav data-bi-name="recommendation-sidebar" hidden="" id="recommended-content-nav" role="navigation" aria-labelledby="recommended-content-nav-title">
+									<h3 id="recommended-content-nav-title">Related Articles</h3>
+								</nav>
+							<nav id="side-doc-outline" data-bi-name="intopic toc" role="navigation" aria-label="Article Outline">
+								<h3>In this article</h3>
+							<ol><li class=""><a href="#using-the-clipboard-for-ipc">Using the Clipboard for IPC</a></li><li class=""><a href="#using-com-for-ipc">Using COM for IPC</a></li><li class=""><a href="#using-data-copy-for-ipc">Using Data Copy for IPC</a></li><li class=""><a href="#using-dde-for-ipc">Using DDE for IPC</a></li><li class=""><a href="#using-a-file-mapping-for-ipc">Using a File Mapping for IPC</a></li><li class=""><a href="#using-a-mailslot-for-ipc">Using a Mailslot for IPC</a></li><li class=""><a href="#using-pipes-for-ipc">Using Pipes for IPC</a></li><li class=""><a href="#using-rpc-for-ipc">Using RPC for IPC</a></li><li class="selected"><a href="#using-windows-sockets-for-ipc">Using Windows Sockets for IPC</a></li></ol></nav>
+						</div>
+					</div>
+
+    <h1>Interprocess Communications</h1>
+    <p>The Windows operating system provides mechanisms for facilitating communications and data sharing between applications. Collectively, the activities enabled by these mechanisms are called <em>interprocess communications</em> (IPC). Some forms of IPC facilitate the division of labor among several specialized processes. Other forms of IPC facilitate the division of labor among computers on a network.</p>
+    <p>Typically, applications can use IPC categorized as clients or servers. A <em>client</em> is an application or a process that requests a service from some other application or process. A <em>server</em> is an application or a process that responds to a client request. Many applications act as both a client and a server, depending on the situation. For example, a word processing application might act as a client in requesting a summary table of manufacturing costs from a spreadsheet application acting as a server. The spreadsheet application, in turn, might act as a client in requesting the latest inventory levels from an automated inventory control application.</p>
+    <p>After you decide that your application would benefit from IPC, you must decide which of the available IPC methods to use. It is likely that an application will use several IPC mechanisms. The answers to these questions determine whether an application can benefit by using one or more IPC mechanisms.</p>
+    <ul>
+<li>Should the application be able to communicate with other applications running on other computers on a network, or is it sufficient for the application to communicate only with applications on the local computer?</li>
+<li>Should the application be able to communicate with applications running on other computers that may be running under different operating systems (such as 16-bit Windows or UNIX)?</li>
+<li>Should the user of the application have to choose the other applications with which the application communicates, or can the application implicitly find its cooperating partners?</li>
+<li>Should the application communicate with many different applications in a general way, such as allowing cut-and-paste operations with any other application, or should its communications requirements be limited to a restricted set of interactions with specific other applications?</li>
+<li>Is performance a critical aspect of the application? All IPC mechanisms include some amount of overhead.</li>
+<li>Should the application be a GUI application or a console application? Some IPC mechanisms require a GUI application.</li>
+</ul>
+<p>The following IPC mechanisms are supported by Windows:</p>
+<ul>
+<li><a href="#using-the-clipboard-for-ipc" data-linktype="self-bookmark">Clipboard</a></li>
+<li><a href="#using-com-for-ipc" data-linktype="self-bookmark">COM</a></li>
+<li><a href="#using-data-copy-for-ipc" data-linktype="self-bookmark">Data Copy</a></li>
+<li><a href="#using-dde-for-ipc" data-linktype="self-bookmark">DDE</a></li>
+<li><a href="#using-a-file-mapping-for-ipc" data-linktype="self-bookmark">File Mapping</a></li>
+<li><a href="#using-a-mailslot-for-ipc" data-linktype="self-bookmark">Mailslots</a></li>
+<li><a href="#using-pipes-for-ipc" data-linktype="self-bookmark">Pipes</a></li>
+<li><a href="#using-rpc-for-ipc" data-linktype="self-bookmark">RPC</a></li>
+<li><a href="#using-windows-sockets-for-ipc" data-linktype="self-bookmark">Windows Sockets</a></li>
+</ul>
+<h2 id="using-the-clipboard-for-ipc">Using the Clipboard for IPC<a class="docon docon-link heading-anchor" href="#using-the-clipboard-for-ipc" aria-labelledby="using-the-clipboard-for-ipc"></a></h2>
+<p>The clipboard acts as a central depository for data sharing among applications. When a user performs a cut or copy operation in an application, the application puts the selected data on the clipboard in one or more standard or application-defined formats. Any other application can then retrieve the data from the clipboard, choosing from the available formats that it understands. The clipboard is a very loosely coupled exchange medium, where applications need only agree on the data format. The applications can reside on the same computer or on different computers on a network.</p>
+<p><strong>Key Point:</strong> All applications should support the clipboard for those data formats that they understand. For example, a text editor or word processor should at least be able to produce and accept clipboard data in pure text format. For more information, see <a href="https://msdn.microsoft.com/library/ms648709(v=VS.85).aspx" data-linktype="external">Clipboard</a>.</p>
+<h2 id="using-com-for-ipc">Using COM for IPC<a class="docon docon-link heading-anchor" href="#using-com-for-ipc" aria-labelledby="using-com-for-ipc"></a></h2>
+<p>Applications that use OLE manage <em>compound documents</em>—that is, documents made up of data from a variety of different applications. OLE provides services that make it easy for applications to call on other applications for data editing. For example, a word processor that uses OLE could embed a graph from a spreadsheet. The user could start the spreadsheet automatically from within the word processor by choosing the embedded chart for editing. OLE takes care of starting the spreadsheet and presenting the graph for editing. When the user quit the spreadsheet, the graph would be updated in the original word processor document. The spreadsheet appears to be an extension of the word processor.</p>
+<p>The foundation of OLE is the Component Object Model (COM). A software component that uses COM can communicate with a wide variety of other components, even those that have not yet been written. The components interact as objects and clients. Distributed COM extends the COM programming model so that it works across a network.</p>
+<p><strong>Key Point:</strong> OLE supports compound documents and enables an application to include embedded or linked data that, when chosen, automatically starts another application for data editing. This enables the application to be extended by any other application that uses OLE. COM objects provide access to an object's data through one or more sets of related functions, known as <em>interfaces</em>. For more information, see COM and ActiveX Object Services.</p>
+<h2 id="using-data-copy-for-ipc">Using Data Copy for IPC<a class="docon docon-link heading-anchor" href="#using-data-copy-for-ipc" aria-labelledby="using-data-copy-for-ipc"></a></h2>
+<p>Data copy enables an application to send information to another application using the <a href="https://msdn.microsoft.com/library/ms649011(v=VS.85).aspx" data-linktype="external"><strong>WM_COPYDATA</strong></a> message. This method requires cooperation between the sending application and the receiving application. The receiving application must know the format of the information and be able to identify the sender. The sending application cannot modify the memory referenced by any pointers.</p>
+<p><strong>Key Point:</strong> Data copy can be used to quickly send information to another application using Windows messaging. For more information, see <a href="https://msdn.microsoft.com/library/ms648710(v=VS.85).aspx" data-linktype="external">Data Copy</a>.</p>
+<h2 id="using-dde-for-ipc">Using DDE for IPC<a class="docon docon-link heading-anchor" href="#using-dde-for-ipc" aria-labelledby="using-dde-for-ipc"></a></h2>
+<p>DDE is a protocol that enables applications to exchange data in a variety of formats. Applications can use DDE for one-time data exchanges or for ongoing exchanges in which the applications update one another as new data becomes available.</p>
+<p>The data formats used by DDE are the same as those used by the clipboard. DDE can be thought of as an extension of the clipboard mechanism. The clipboard is almost always used for a one-time response to a user command, such as choosing the Paste command from a menu. DDE is also usually initiated by a user command, but it often continues to function without further user interaction. You can also define custom DDE data formats for special-purpose IPC between applications with more tightly coupled communications requirements.</p>
+<p>DDE exchanges can occur between applications running on the same computer or on different computers on a network.</p>
+<p><strong>Key Point:</strong> DDE is not as efficient as newer technologies. However, you can still use DDE if other IPC mechanisms are not suitable or if you must interface with an existing application that only supports DDE. For more information, see <a href="https://msdn.microsoft.com/library/ms648711(v=VS.85).aspx" data-linktype="external">Dynamic Data Exchange</a> and <a href="https://msdn.microsoft.com/library/ms648712(v=VS.85).aspx" data-linktype="external">Dynamic Data Exchange Management Library</a>.</p>
+<h2 id="using-a-file-mapping-for-ipc">Using a File Mapping for IPC<a class="docon docon-link heading-anchor" href="#using-a-file-mapping-for-ipc" aria-labelledby="using-a-file-mapping-for-ipc"></a></h2>
+<p><em>File mapping</em> enables a process to treat the contents of a file as if they were a block of memory in the process's address space. The process can use simple pointer operations to examine and modify the contents of the file. When two or more processes access the same file mapping, each process receives a pointer to memory in its own address space that it can use to read or modify the contents of the file. The processes must use a synchronization object, such as a semaphore, to prevent data corruption in a multitasking environment.</p>
+<p>You can use a special case of file mapping to provide <em>named shared memory</em> between processes. If you specify the system swapping file when creating a file-mapping object, the file-mapping object is treated as a shared memory block. Other processes can access the same block of memory by opening the same file-mapping object.</p>
+<p>File mapping is quite efficient and also provides operating-system–supported security attributes that can help prevent unauthorized data corruption. File mapping can be used only between processes on a local computer; it cannot be used over a network.</p>
+<p><strong>Key Point:</strong> File mapping is an efficient way for two or more processes on the same computer to share data, but you must provide synchronization between the processes. For more information, see <a href="https://docs.microsoft.com/windows/desktop/Memory/file-mapping" data-linktype="external">File Mapping</a> and <a href="https://docs.microsoft.com/windows/desktop/Sync/synchronization" data-linktype="external">Synchronization</a>.</p>
+<h2 id="using-a-mailslot-for-ipc">Using a Mailslot for IPC<a class="docon docon-link heading-anchor" href="#using-a-mailslot-for-ipc" aria-labelledby="using-a-mailslot-for-ipc"></a></h2>
+<p>Mailslots provide one-way communication. Any process that creates a mailslot is a <em>mailslot server</em>. Other processes, called <em>mailslot clients</em>, send messages to the mailslot server by writing a message to its mailslot. Incoming messages are always appended to the mailslot. The mailslot saves the messages until the mailslot server has read them. A process can be both a mailslot server and a mailslot client, so two-way communication is possible using multiple mailslots.</p>
+<p>A mailslot client can send a message to a mailslot on its local computer, to a mailslot on another computer, or to all mailslots with the same name on all computers in a specified network domain. Messages broadcast to all mailslots on a domain can be no longer than 400 bytes, whereas messages sent to a single mailslot are limited only by the maximum message size specified by the mailslot server when it created the mailslot.</p>
+<p><strong>Key Point:</strong> Mailslots offer an easy way for applications to send and receive short messages. They also provide the ability to broadcast messages across all computers in a network domain. For more information, see <a href="mailslots" data-linktype="relative-path">Mailslots</a>.</p>
+<h2 id="using-pipes-for-ipc">Using Pipes for IPC<a class="docon docon-link heading-anchor" href="#using-pipes-for-ipc" aria-labelledby="using-pipes-for-ipc"></a></h2>
+<p>There are two types of pipes for two-way communication: anonymous pipes and named pipes. <em>Anonymous pipes</em> enable related processes to transfer information to each other. Typically, an anonymous pipe is used for redirecting the standard input or output of a child process so that it can exchange data with its parent process. To exchange data in both directions (duplex operation), you must create two anonymous pipes. The parent process writes data to one pipe using its write handle, while the child process reads the data from that pipe using its read handle. Similarly, the child process writes data to the other pipe and the parent process reads from it. Anonymous pipes cannot be used over a network, nor can they be used between unrelated processes.</p>
+<p><em>Named pipes</em> are used to transfer data between processes that are not related processes and between processes on different computers. Typically, a named-pipe server process creates a named pipe with a well-known name or a name that is to be communicated to its clients. A named-pipe client process that knows the name of the pipe can open its other end, subject to access restrictions specified by named-pipe server process. After both the server and client have connected to the pipe, they can exchange data by performing read and write operations on the pipe.</p>
+<p><strong>Key Point:</strong> Anonymous pipes provide an efficient way to redirect standard input or output to child processes on the same computer. Named pipes provide a simple programming interface for transferring data between two processes, whether they reside on the same computer or over a network. For more information, see <a href="pipes" data-linktype="relative-path">Pipes</a>.</p>
+<h2 id="using-rpc-for-ipc">Using RPC for IPC<a class="docon docon-link heading-anchor" href="#using-rpc-for-ipc" aria-labelledby="using-rpc-for-ipc"></a></h2>
+<p>RPC enables applications to call functions remotely. Therefore, RPC makes IPC as easy as calling a function. RPC operates between processes on a single computer or on different computers on a network.</p>
+<p>The RPC provided by Windows is compliant with the Open Software Foundation (OSF) Distributed Computing Environment (DCE). This means that applications that use RPC are able to communicate with applications running with other operating systems that support DCE. RPC automatically supports data conversion to account for different hardware architectures and for byte-ordering between dissimilar environments.</p>
+<p>RPC clients and servers are tightly coupled but still maintain high performance. The system makes extensive use of RPC to facilitate a client/server relationship between different parts of the operating system.</p>
+<p><strong>Key Point:</strong> RPC is a function-level interface, with support for automatic data conversion and for communications with other operating systems. Using RPC, you can create high-performance, tightly coupled distributed applications. For more information, see <a href="https://docs.microsoft.com/windows/desktop/Rpc/microsoft-rpc-components" data-linktype="external">Microsoft RPC Components</a>.</p>
+<h2 id="using-windows-sockets-for-ipc">Using Windows Sockets for IPC<a class="docon docon-link heading-anchor" href="#using-windows-sockets-for-ipc" aria-labelledby="using-windows-sockets-for-ipc"></a></h2>
+<p>Windows Sockets is a protocol-independent interface. It takes advantage of the communication capabilities of the underlying protocols. In Windows Sockets 2, a socket handle can optionally be used as a file handle with the standard file I/O functions.</p>
+<p>Windows Sockets are based on the sockets first popularized by Berkeley Software Distribution (BSD). An application that uses Windows Sockets can communicate with other socket implementation on other types of systems. However, not all transport service providers support all available options.</p>
+<p><strong>Key Point:</strong> Windows Sockets is a protocol-independent interface capable of supporting current and emerging networking capabilities. For more information, see <a href="https://docs.microsoft.com/windows/desktop/WinSock/windows-sockets-start-page-2" data-linktype="external">Windows Sockets 2</a>.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<hr>
+<div class="bottom-container">
+  <div class="footer">
+    <p  style="color:#edf0f1"><u>SUBMITTED BY </u></p>
+    <p style="color:#edf0f1"><u>GROUP MEMBERS:-</u></p>
+    <p style="color:#edf0f1">1803013103 SHUBHAM BISHT</p>
+    <p style="color:#edf0f1">1803013102 SHUBHAM ARYA</p>
+  </div>
+</div>
+  </body>
+</html>
